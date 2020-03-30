@@ -24,6 +24,8 @@
 		$response->message = "Selamat datang ".$row['username'];
 		$response->id = $row['id_petugas'];
 		$response->username = $row['username'];
+  $response->tipep = $row['level'];
+  $response->fotop = $row['foto_petugas'];
 		die(json_encode($response));
 		
 	} else { 

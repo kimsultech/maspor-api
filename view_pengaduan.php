@@ -5,13 +5,13 @@
   $id = $_GET['idpv'];
 
 	//creating a query
-	$stmt = $con->prepare("SELECT nik,nama,tgl_pengaduan,isi_laporan,foto,status FROM pengaduan INNER JOIN masyarakat USING (nik) WHERE id_pengaduan  = '$id';");
+	$stmt = $con->prepare("SELECT nik,nama,tgl_pengaduan,isi_laporan,foto,status,foto_profile FROM pengaduan INNER JOIN masyarakat USING (nik) WHERE id_pengaduan  = '$id';");
 	
 	//executing the query 
 	$stmt->execute();
 	
 	//binding results to the query 
-	$stmt->bind_result($idnik, $nama, $tgl, $isilaporan, $foto, $status);
+	$stmt->bind_result($idnik, $nama, $tgl, $isilaporan, $foto, $status, $fotop);
 	
 	$viewpengaduan = array(); 
 	
@@ -24,6 +24,7 @@
 		$temp['isi_laporan'] = $isilaporan; 
    $temp['foto'] = $foto; 
     $temp['status'] = $status; 
+   $temp['fotop'] = $fotop; 
 		array_push($viewpengaduan, $temp);
 	}
 	

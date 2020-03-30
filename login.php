@@ -24,6 +24,7 @@
 		$response->message = "Selamat datang ".$row['username'];
 		$response->id = $row['nik'];
 		$response->username = $row['username'];
+  $response->foto = $row['foto_profile'];
 		die(json_encode($response));
 		
 	} else { 

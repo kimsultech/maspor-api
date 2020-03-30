@@ -5,13 +5,13 @@
   $id = $_GET['idpvt'];
 
 	//creating a query
-	$stmt = $con->prepare("SELECT id_tanggapan,id_pengaduan,tgl_tanggapan,tanggapan,id_petugas,nama_petugas FROM tanggapan INNER JOIN petugas USING (id_petugas) WHERE id_pengaduan  = '$id';");
+	$stmt = $con->prepare("SELECT id_tanggapan,id_pengaduan,tgl_tanggapan,tanggapan,id_petugas,nama_petugas,foto_petugas FROM tanggapan INNER JOIN petugas USING (id_petugas) WHERE id_pengaduan  = '$id';");
 	
 	//executing the query 
 	$stmt->execute();
 	
 	//binding results to the query 
-	$stmt->bind_result($idtanggapan, $idpengaduan, $tgl, $tanggapan, $idpetugas, $nama);
+	$stmt->bind_result($idtanggapan, $idpengaduan, $tgl, $tanggapan, $idpetugas, $nama, $fotopetugas);
 	
 	$viewtanggapan = array(); 
 	
@@ -24,6 +24,7 @@
 		$temp['tanggapan'] = $tanggapan; 
    $temp['id_petugas'] = $idpetugas; 
     $temp['nama_petugas'] = $nama; 
+    $temp['fotopetugas'] = $fotopetugas; 
 		array_push($viewtanggapan, $temp);
 	}
 	
